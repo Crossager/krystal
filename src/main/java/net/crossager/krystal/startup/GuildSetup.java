@@ -2,8 +2,9 @@ package net.crossager.krystal.startup;
 
 import net.crossager.krystal.KrystalContext;
 import net.crossager.krystal.commandmanager.DefaultKrystalCommands;
+import net.crossager.krystal.commandmanager.DefaultPrivateKrystalCommands;
 import net.crossager.krystal.commands.ServerSettingsCommand;
-import net.crossager.krystal.guild.CustomGuildProfile;
+import net.crossager.krystal.guild.PrivateGuildProfile;
 import net.crossager.krystal.guild.GuildProfile;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
@@ -28,7 +29,7 @@ public class GuildSetup extends ListenerAdapter {
     public GuildSetup(Guild guild, KrystalContext context) {
         this.guild = guild;
         this.context = context;
-        if (context.guildCache().get(guild).isPresent()) return;
+        if (context.guilds().get(guild).isPresent()) return;
         getAvailableTextChannel(guild.getTextChannels()).ifPresentOrElse(channel -> channel.sendMessageEmbeds(new EmbedBuilder()
                         .setColor(context.getColor())
                         .setDescription("Thank you for using Krystal. Krystal is a large economy bot that can provide tons of entertainment to our users." +
@@ -71,14 +72,14 @@ public class GuildSetup extends ListenerAdapter {
                 if (context.utilities().sendAndReturn(
                         !event.getMember().hasPermission(Permission.MANAGE_SERVER),
                         () -> event.replyEmbeds(context.utilities().invalidPermission(Permission.MANAGE_SERVER)).setEphemeral(true).queue())) return;
-                Optional<GuildProfile> guildProfile = context.guildCache().get(event.getGuild());
+                Optional<GuildProfile> guildProfile = context.guilds().get(event.getGuild());
                 guildProfile.ifPresent(guild -> {
                     event.reply("This server is already running on an instance").setEphemeral(true).queue();
                     event.getMessage().delete().queue();
                 });
                 if (guildProfile.isPresent()) return;
 
-                context.guildCache().registerAsDefault(event.getGuild());
+                context.guilds().registerAsDefault(event.getGuild());
                 event.editMessageEmbeds(new EmbedBuilder()
                         .setColor(context.getColor())
                         .addField("Shared instance", "The bot is up and running using the `shared` instance", false)
@@ -88,14 +89,14 @@ public class GuildSetup extends ListenerAdapter {
                 if (context.utilities().sendAndReturn(
                         !event.getMember().hasPermission(Permission.MANAGE_SERVER),
                         () -> event.replyEmbeds(context.utilities().invalidPermission(Permission.MANAGE_SERVER)).setEphemeral(true).queue())) return;
-                Optional<GuildProfile> guildProfile = context.guildCache().get(event.getIdLong());
+                Optional<GuildProfile> guildProfile = context.guilds().get(event.getIdLong());
                 guildProfile.ifPresent(guild -> {
                     event.reply("This server is already running on an instance").setEphemeral(true).queue();
                     event.getMessage().delete().queue();
                 });
                 if (guildProfile.isPresent()) return;
 
-                CustomGuildProfile profile = context.guildCache().register(event.getGuild());
+                PrivateGuildProfile profile = context.guilds().register(event.getGuild());
                 profile.commands().registerCommands(new DefaultKrystalCommands());
                 profile.commands().registerCommands(new DefaultPrivateKrystalCommands());
                 event.editMessageEmbeds(new EmbedBuilder()
