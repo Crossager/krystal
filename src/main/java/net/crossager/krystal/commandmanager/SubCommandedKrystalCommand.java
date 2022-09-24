@@ -12,6 +12,7 @@ public abstract class SubCommandedKrystalCommand implements KrystalCommand {
     @Override
     public void onCommand(SlashCommandInteraction command, KrystalContext context, GuildProfile guildProfile) {
         if (command.getSubcommandName() == null) throw new IllegalStateException("Command has subcommands but no subcommand name is provided");
+
         for (KrystalCommand subCommand : subCommands()) {
             if (subCommand.name().equals(command.getSubcommandName())) subCommand.onCommand(command, context, guildProfile);
         }
