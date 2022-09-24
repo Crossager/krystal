@@ -1,7 +1,7 @@
 package net.crossager.krystal.guild;
 
 import net.crossager.krystal.KrystalContext;
-import net.crossager.krystal.user.GuildUserProfile;
+import net.crossager.krystal.economy.WorkStation;
 import net.dv8tion.jda.api.entities.Guild;
 
 import java.awt.*;
