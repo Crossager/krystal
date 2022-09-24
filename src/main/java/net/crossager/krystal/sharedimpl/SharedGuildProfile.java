@@ -49,4 +49,9 @@ public class SharedGuildProfile implements GuildProfile {
     public Color color() {
         return context.getColor();
     }
+
+    @Override
+    public KrystalContext context() {
+        return context;
+    }
 }

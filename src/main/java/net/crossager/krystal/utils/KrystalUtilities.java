@@ -30,11 +30,15 @@ public class KrystalUtilities {
     }
 
     public EmbedBuilder newCommandEmbed(User user) {
-        return new EmbedBuilder().setColor(context.getColor()).setFooter(user.getAsTag());
+        return new EmbedBuilder().setColor(context.getColor()).setFooter(user.getAsTag(), user.getAvatarUrl());
     }
 
     public MessageEmbed error(User user, String message) {
         return newCommandEmbed(user).setColor(Color.RED).addField("Error", message, false).build();
+    }
+
+    public Button inactivity() {
+        return Button.secondary("null", "Closed due to inactivity").withDisabled(true);
     }
 }
 

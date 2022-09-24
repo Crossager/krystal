@@ -7,12 +7,14 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
 public class Krystal {
     private Krystal() throws InterruptedException {
         GuildJoinListener guildJoinListener = new GuildJoinListener();
         JDA jda = JDABuilder.createDefault(new ResourceAsString("/tokens/token").string())
                 .enableIntents(GatewayIntent.getIntents(GatewayIntent.ALL_INTENTS))
+                .setMemberCachePolicy(MemberCachePolicy.ALL)
                 .addEventListeners(guildJoinListener)
                 .setActivity(Activity.competing("top leaderboard"))
                 .build().awaitReady();

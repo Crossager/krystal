@@ -12,7 +12,8 @@ public class DefaultKrystalCommands extends AbstractList<KrystalCommand> {
     private final List<KrystalCommand> commands = List.of(
             new HelpCommand(),
             new BalanceCommand(),
-            new PayCommand()
+            new PayCommand(),
+            new LeaderboardCommand()
     );
 
     @Override

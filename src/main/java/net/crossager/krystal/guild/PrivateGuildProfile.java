@@ -52,4 +52,9 @@ public class PrivateGuildProfile implements GuildProfile {
     public Color color() {
         return context.getColor();
     }
+
+    @Override
+    public KrystalContext context() {
+        return context;
+    }
 }
