@@ -2,17 +2,16 @@ package net.crossager.krystal.commandmanager;
 
 import net.crossager.krystal.commands.BalanceCommand;
 import net.crossager.krystal.commands.HelpCommand;
-import net.crossager.krystal.commands.LeaderboardCommand;
-import net.crossager.krystal.commands.PayCommand;
+import net.crossager.krystal.commands.ServerSettingsCommand;
+import net.crossager.krystal.commands.privAdmin.MoneyCommand;
 
 import java.util.AbstractList;
 import java.util.List;
 
-public class DefaultKrystalCommands extends AbstractList<KrystalCommand> {
+public class DefaultPrivateKrystalCommands extends AbstractList<KrystalCommand> {
     private final List<KrystalCommand> commands = List.of(
-            new HelpCommand(),
-            new BalanceCommand(),
-            new PayCommand()
+            new MoneyCommand(),
+            new ServerSettingsCommand()
     );
 
     @Override

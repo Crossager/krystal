@@ -4,6 +4,7 @@ import net.crossager.krystal.KrystalContext;
 import net.crossager.krystal.commandmanager.CommandManager;
 import net.dv8tion.jda.api.entities.Guild;
 
+import java.awt.*;
 import java.util.List;
 
 public class PrivateGuildProfile implements GuildProfile {
