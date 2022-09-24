@@ -14,4 +14,5 @@ public interface GuildProfile {
     GuildUserProfileCache profiles();
     Color color();
     KrystalContext context();
+    List<WorkStation> availableWorkStations();
 }

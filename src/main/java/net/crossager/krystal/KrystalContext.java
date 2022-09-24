@@ -6,6 +6,7 @@ import net.crossager.krystal.guild.GuildProfileCache;
 import net.crossager.krystal.schedule.Scheduler;
 import net.crossager.krystal.sharedimpl.SharedGuildProfile;
 import net.crossager.krystal.utils.CustomKrystalLogger;
+import net.crossager.krystal.utils.KrystalRandom;
 import net.crossager.krystal.utils.KrystalUtilities;
 import net.dv8tion.jda.api.JDA;
 
@@ -18,7 +19,7 @@ public class KrystalContext {
     private final GuildProfileCache guildProfiles;
     private final JDA jda;
     private final Logger logger = new CustomKrystalLogger();
-    private final Random random = new Random();
+    private final KrystalRandom random = new KrystalRandom();
     private final Scheduler scheduler = new Scheduler();
 
     public KrystalContext(JDA jda) {
@@ -47,7 +48,7 @@ public class KrystalContext {
         return logger;
     }
 
-    public Random random() {
+    public KrystalRandom random() {
         return random;
     }
 

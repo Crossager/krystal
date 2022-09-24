@@ -97,7 +97,7 @@ public class GuildSetup extends ListenerAdapter {
                 if (guildProfile.isPresent()) return;
 
                 PrivateGuildProfile profile = context.guilds().register(event.getGuild());
-                profile.commands().registerCommands(new DefaultKrystalCommands());
+                profile.commands().registerCommands(new DefaultKrystalCommands(profile));
                 profile.commands().registerCommands(new DefaultPrivateKrystalCommands());
                 event.editMessageEmbeds(new EmbedBuilder()
                         .setColor(context.getColor())

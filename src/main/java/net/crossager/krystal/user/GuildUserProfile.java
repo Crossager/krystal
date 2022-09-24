@@ -1,6 +1,7 @@
 package net.crossager.krystal.user;
 
 import net.crossager.krystal.guild.GuildProfile;
+import net.crossager.krystal.utils.CoolDownMap;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.User;
 
@@ -12,6 +13,7 @@ public class GuildUserProfile {
     private UserInteractable userInteractable;
     private final User user;
 
+    private final CoolDownMap coolDowns = new CoolDownMap();
     private long money;
 
     public GuildUserProfile(long id, GuildProfile guildProfile) {
@@ -53,5 +55,9 @@ public class GuildUserProfile {
 
     public User getUser() {
         return user;
+    }
+
+    public CoolDownMap getCoolDowns() {
+        return coolDowns;
     }
 }

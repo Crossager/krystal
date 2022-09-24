@@ -3,6 +3,7 @@ package net.crossager.krystal.sharedimpl;
 import net.crossager.krystal.KrystalContext;
 import net.crossager.krystal.commandmanager.CommandManager;
 import net.crossager.krystal.commandmanager.DefaultKrystalCommands;
+import net.crossager.krystal.economy.WorkStation;
 import net.crossager.krystal.guild.GuildProfile;
 import net.crossager.krystal.guild.GuildUserProfileCache;
 import net.crossager.krystal.user.GuildUserProfile;
@@ -20,7 +21,7 @@ public class SharedGuildProfile implements GuildProfile {
 
     public SharedGuildProfile(KrystalContext context) {
         commandManager = new CommandManager(context);
-        commandManager.registerCommands(new DefaultKrystalCommands());
+        commandManager.registerCommands(new DefaultKrystalCommands(this));
         profiles = new GuildUserProfileCache(this);
         this.context = context;
     }
@@ -53,5 +54,10 @@ public class SharedGuildProfile implements GuildProfile {
     @Override
     public KrystalContext context() {
         return context;
+    }
+
+    @Override
+    public List<WorkStation> availableWorkStations() {
+        return null;
     }
 }

@@ -1,20 +1,23 @@
 package net.crossager.krystal.commandmanager;
 
-import net.crossager.krystal.commands.BalanceCommand;
-import net.crossager.krystal.commands.HelpCommand;
-import net.crossager.krystal.commands.LeaderboardCommand;
-import net.crossager.krystal.commands.PayCommand;
+import net.crossager.krystal.commands.*;
+import net.crossager.krystal.guild.GuildProfile;
 
 import java.util.AbstractList;
 import java.util.List;
 
 public class DefaultKrystalCommands extends AbstractList<KrystalCommand> {
-    private final List<KrystalCommand> commands = List.of(
-            new HelpCommand(),
-            new BalanceCommand(),
-            new PayCommand(),
-            new LeaderboardCommand()
-    );
+    private final List<KrystalCommand> commands;
+
+    public DefaultKrystalCommands(GuildProfile profile) {
+        commands = List.of(
+                new HelpCommand(),
+                new BalanceCommand(),
+                new PayCommand(),
+                new LeaderboardCommand(),
+                new WorkCommand(profile.availableWorkStations())
+        );
+    }
 
     @Override
     public KrystalCommand get(int index) {

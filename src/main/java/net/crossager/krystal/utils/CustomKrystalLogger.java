@@ -17,7 +17,7 @@ public class CustomKrystalLogger extends Logger {
         PrintStream out = isWarning(record.getLevel()) ? System.err : System.out;
         out.printf("[%s %s | %s] %s\n",
                 this.getName(),
-                new SimpleDateFormat("MM/dd HH:mm:ss", Locale.GERMANY).format(System.currentTimeMillis()),
+                new SimpleDateFormat("MM/dd HH:mm:ss").format(System.currentTimeMillis()),
                 record.getLevel().getName(),
                 record.getMessage());
     }

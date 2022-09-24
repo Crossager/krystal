@@ -9,10 +9,7 @@ import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.SlashCommandInteraction;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class LeaderboardCommand implements KrystalCommand {
     public static final int MEMBERS_PER_PAGE = 15;
@@ -30,6 +27,7 @@ public class LeaderboardCommand implements KrystalCommand {
 
         List<GuildUserProfile> leaderboard = new ArrayList<>(guildProfile.profiles().getUserProfiles().values());
         leaderboard.sort(Comparator.comparingLong(GuildUserProfile::getMoney));
+        Collections.reverse(leaderboard);
 
         if (leaderboard.isEmpty()) leaderboard.add(guildProfile.profiles().get(command.getUser()));
 

@@ -37,6 +37,10 @@ public class KrystalUtilities {
         return newCommandEmbed(user).setColor(Color.RED).addField("Error", message, false).build();
     }
 
+    public MessageEmbed error(User user, String title,  String message) {
+        return newCommandEmbed(user).setColor(Color.RED).addField(title, message, false).build();
+    }
+
     public Button inactivity() {
         return Button.secondary("null", "Closed due to inactivity").withDisabled(true);
     }
