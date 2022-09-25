@@ -1,9 +1,7 @@
 package net.crossager.krystal.commandmanager;
 
-import net.crossager.krystal.commands.BalanceCommand;
-import net.crossager.krystal.commands.HelpCommand;
 import net.crossager.krystal.commands.ServerSettingsCommand;
-import net.crossager.krystal.commands.privAdmin.MoneyCommand;
+import net.crossager.krystal.commands.admin.MoneyCommand;
 
 import java.util.AbstractList;
 import java.util.List;

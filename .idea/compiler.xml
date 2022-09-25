@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Krystal" target="18" />
       <module name="krystal" target="18" />
     </bytecodeTargetLevel>
   </component>
