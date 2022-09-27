@@ -27,7 +27,6 @@ public class KrystalContext {
         guildProfiles = new GuildProfileCache(new SharedGuildProfile(this), this);
     }
 
-
     public Scheduler scheduler() {
         return scheduler;
     }
@@ -50,10 +49,6 @@ public class KrystalContext {
 
     public KrystalRandom random() {
         return random;
-    }
-
-    public Color getColor() {
-        return new Color(120, 0, 248);
     }
 
     public KrystalUtilities utilities() {

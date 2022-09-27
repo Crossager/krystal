@@ -1,4 +1,4 @@
-package net.crossager.krystal.commands;
+package net.crossager.krystal.commands.admin;
 
 import net.crossager.krystal.KrystalContext;
 import net.crossager.krystal.commandmanager.KrystalCommand;

@@ -3,9 +3,9 @@ package net.crossager.krystal.startup;
 import net.crossager.krystal.KrystalContext;
 import net.crossager.krystal.commandmanager.DefaultKrystalCommands;
 import net.crossager.krystal.commandmanager.DefaultPrivateKrystalCommands;
-import net.crossager.krystal.commands.ServerSettingsCommand;
 import net.crossager.krystal.guild.PrivateGuildProfile;
 import net.crossager.krystal.guild.GuildProfile;
+import net.crossager.krystal.utils.DefaultKrystalColor;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
@@ -31,7 +31,7 @@ public class GuildSetup extends ListenerAdapter {
         this.context = context;
         if (context.guilds().get(guild).isPresent()) return;
         getAvailableTextChannel(guild.getTextChannels()).ifPresentOrElse(channel -> channel.sendMessageEmbeds(new EmbedBuilder()
-                        .setColor(context.getColor())
+                        .setColor(new DefaultKrystalColor())
                         .setDescription("Thank you for using Krystal. Krystal is a large economy bot that can provide tons of entertainment to our users." +
                                 "\nBefore we continue, please select which kind of instance you want to bot to run")
                         .addField("Shared instance", "Every server shares the same leaderboard instance, you cant customize it", false)
@@ -81,7 +81,7 @@ public class GuildSetup extends ListenerAdapter {
 
                 context.guilds().registerAsDefault(event.getGuild());
                 event.editMessageEmbeds(new EmbedBuilder()
-                        .setColor(context.getColor())
+                        .setColor(new DefaultKrystalColor())
                         .addField("Shared instance", "The bot is up and running using the `shared` instance", false)
                         .build()).setComponents().queue();
             }
@@ -100,7 +100,7 @@ public class GuildSetup extends ListenerAdapter {
                 profile.commands().registerCommands(new DefaultKrystalCommands(profile));
                 profile.commands().registerCommands(new DefaultPrivateKrystalCommands());
                 event.editMessageEmbeds(new EmbedBuilder()
-                        .setColor(context.getColor())
+                        .setColor(new DefaultKrystalColor())
                         .addField("Private instance", "The bot is up and running using a `private` instance", false)
                         .build()).setComponents().queue();
             }

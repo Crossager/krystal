@@ -30,7 +30,7 @@ public class KrystalUtilities {
     }
 
     public EmbedBuilder newCommandEmbed(User user) {
-        return new EmbedBuilder().setColor(context.getColor()).setFooter(user.getAsTag(), user.getAvatarUrl());
+        return new EmbedBuilder().setColor(new DefaultKrystalColor()).setFooter(user.getAsTag(), user.getAvatarUrl());
     }
 
     public MessageEmbed error(User user, String message) {

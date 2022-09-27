@@ -7,10 +7,7 @@ import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.Command;
-import net.dv8tion.jda.api.interactions.commands.build.CommandData;
-import net.dv8tion.jda.api.interactions.commands.build.Commands;
-import net.dv8tion.jda.api.interactions.commands.build.SlashCommandData;
-import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
+import net.dv8tion.jda.api.interactions.commands.build.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
@@ -47,7 +44,9 @@ public class CommandManager {
 
     private CommandData toJDACommand(KrystalCommand command) {
         SlashCommandData data = Commands.slash(command.name(), command.description());
-        if (command instanceof SubCommandedKrystalCommand subCommandedCommand)
+        if (command instanceof GroupSubCommandedKrystalCommand groupSubCommandedCommand)
+            data.addSubcommandGroups(groupSubCommandedCommand.subCommandGroups().stream().map(this::toJDASubcommandGroup).collect(Collectors.toList()));
+        else if (command instanceof SubCommandedKrystalCommand subCommandedCommand)
             data.addSubcommands(subCommandedCommand.subCommands().stream().map(this::toJDASubcommand).collect(Collectors.toList()));
         else
             data.addOptions(command.options());
@@ -56,6 +55,11 @@ public class CommandManager {
 
     private SubcommandData toJDASubcommand(KrystalCommand command) {
         return new SubcommandData(command.name(), command.description()).addOptions(command.options());
+    }
+
+    private SubcommandGroupData toJDASubcommandGroup(SubCommandedKrystalCommand command) {
+        return new SubcommandGroupData(command.name(), command.description())
+                .addSubcommands(command.subCommands().stream().map(this::toJDASubcommand).toList());
     }
 
     public List<KrystalCommand> getCommands() {

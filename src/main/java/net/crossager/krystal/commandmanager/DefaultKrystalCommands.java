@@ -15,7 +15,7 @@ public class DefaultKrystalCommands extends AbstractList<KrystalCommand> {
                 new BalanceCommand(),
                 new PayCommand(),
                 new LeaderboardCommand(),
-                new WorkCommand(profile.availableWorkStations())
+                new WorkCommand(List.of())
         );
     }
 

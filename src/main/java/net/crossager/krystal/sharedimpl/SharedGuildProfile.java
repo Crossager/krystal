@@ -6,6 +6,7 @@ import net.crossager.krystal.commandmanager.DefaultKrystalCommands;
 import net.crossager.krystal.economy.WorkStation;
 import net.crossager.krystal.guild.GuildProfile;
 import net.crossager.krystal.guild.GuildUserProfileCache;
+import net.crossager.krystal.guild.settings.GuildSetting;
 import net.crossager.krystal.user.GuildUserProfile;
 import net.dv8tion.jda.api.entities.Guild;
 
@@ -47,17 +48,12 @@ public class SharedGuildProfile implements GuildProfile {
     }
 
     @Override
-    public Color color() {
-        return context.getColor();
-    }
-
-    @Override
     public KrystalContext context() {
         return context;
     }
 
     @Override
-    public List<WorkStation> availableWorkStations() {
+    public List<GuildSetting<?>> settings() {
         return null;
     }
 }

@@ -2,6 +2,7 @@ package net.crossager.krystal.guild;
 
 import net.crossager.krystal.KrystalContext;
 import net.crossager.krystal.economy.WorkStation;
+import net.crossager.krystal.guild.settings.GuildSetting;
 import net.dv8tion.jda.api.entities.Guild;
 
 import java.awt.*;
@@ -12,7 +13,6 @@ public interface GuildProfile {
     boolean isShared();
     void addGuild(Guild guild);
     GuildUserProfileCache profiles();
-    Color color();
     KrystalContext context();
-    List<WorkStation> availableWorkStations();
+    List<GuildSetting<?>> settings();
 }
