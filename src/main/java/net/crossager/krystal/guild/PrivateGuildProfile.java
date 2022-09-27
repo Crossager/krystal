@@ -5,7 +5,11 @@ import net.crossager.krystal.commandmanager.CommandManager;
 import net.crossager.krystal.economy.DefaultWorkStations;
 import net.crossager.krystal.economy.WorkStation;
 import net.crossager.krystal.guild.settings.GuildSetting;
+import net.crossager.krystal.guild.settings.GuildSettings;
+import net.crossager.krystal.utils.DefaultKrystalColor;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.User;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -17,7 +21,7 @@ public class PrivateGuildProfile implements GuildProfile {
     private final Guild guild;
     private final GuildUserProfileCache profiles;
     private final KrystalContext context;
-
+    private final GuildSettings settings = new GuildSettings();
 
     public PrivateGuildProfile(Guild guild, KrystalContext context) {
         this.guild = guild;
@@ -58,7 +62,12 @@ public class PrivateGuildProfile implements GuildProfile {
     }
 
     @Override
-    public List<GuildSetting<?>> settings() {
-        return null;
+    public GuildSettings settings() {
+        return settings;
+    }
+
+    @Override
+    public EmbedBuilder newCommandEmbed(User user) {
+        return new EmbedBuilder().setColor(settings.color().get()).setFooter(user.getAsTag(), user.getAvatarUrl());
     }
 }

@@ -7,8 +7,12 @@ import net.crossager.krystal.economy.WorkStation;
 import net.crossager.krystal.guild.GuildProfile;
 import net.crossager.krystal.guild.GuildUserProfileCache;
 import net.crossager.krystal.guild.settings.GuildSetting;
+import net.crossager.krystal.guild.settings.GuildSettings;
 import net.crossager.krystal.user.GuildUserProfile;
+import net.crossager.krystal.utils.DefaultKrystalColor;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.User;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -53,7 +57,12 @@ public class SharedGuildProfile implements GuildProfile {
     }
 
     @Override
-    public List<GuildSetting<?>> settings() {
+    public GuildSettings settings() {
         return null;
+    }
+
+    @Override
+    public EmbedBuilder newCommandEmbed(User user) {
+        return context.utilities().newCommandEmbed(user);
     }
 }

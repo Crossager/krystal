@@ -43,7 +43,7 @@ public class MoneyCommand extends SubCommandedKrystalCommand {
                     () -> command.replyEmbeds(context.utilities().error(command.getUser(), "Provided user is a bot")).setEphemeral(true).queue()
             )) return;
             long amount = command.getOption("amount").getAsLong();
-            EmbedBuilder builder = context.utilities().newCommandEmbed(command.getUser());
+            EmbedBuilder builder = guildProfile.newCommandEmbed(command.getUser());
 
             builder.addField("Addition completed", "Added %s to %s".formatted(amount, user.getAsMention()), false);
 
@@ -80,7 +80,7 @@ public class MoneyCommand extends SubCommandedKrystalCommand {
                     () -> command.replyEmbeds(context.utilities().error(command.getUser(), "Provided user is a bot")).setEphemeral(true).queue()
             )) return;
             long amount = command.getOption("amount").getAsLong();
-            EmbedBuilder builder = context.utilities().newCommandEmbed(command.getUser());
+            EmbedBuilder builder = guildProfile.newCommandEmbed(command.getUser());
 
             builder.addField("Set completed", "Set %s for %s".formatted(amount, user.getAsMention()), false);
 
@@ -117,7 +117,7 @@ public class MoneyCommand extends SubCommandedKrystalCommand {
                     () -> command.replyEmbeds(context.utilities().error(command.getUser(), "Provided user is a bot")).setEphemeral(true).queue()
             )) return;
             long amount = command.getOption("amount").getAsLong();
-            EmbedBuilder builder = context.utilities().newCommandEmbed(command.getUser());
+            EmbedBuilder builder = guildProfile.newCommandEmbed(command.getUser());
 
             builder.addField("Subtraction completed", "Removed %s from %s".formatted(amount, user.getAsMention()), false);
 

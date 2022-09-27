@@ -20,7 +20,7 @@ public class LeaderboardCommand implements KrystalCommand {
         if (command.getOption("page") != null){
             page = (int) (command.getOption("page").getAsLong() - 1);
         }
-        EmbedBuilder builder = context.utilities().newCommandEmbed(command.getUser());
+        EmbedBuilder builder = guildProfile.newCommandEmbed(command.getUser());
         StringBuilder s1 = new StringBuilder();
         StringBuilder s2 = new StringBuilder();
         StringBuilder s3 = new StringBuilder();

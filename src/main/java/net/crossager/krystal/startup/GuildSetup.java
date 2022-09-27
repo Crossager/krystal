@@ -98,7 +98,7 @@ public class GuildSetup extends ListenerAdapter {
 
                 PrivateGuildProfile profile = context.guilds().register(event.getGuild());
                 profile.commands().registerCommands(new DefaultKrystalCommands(profile));
-                profile.commands().registerCommands(new DefaultPrivateKrystalCommands());
+                profile.commands().registerCommands(new DefaultPrivateKrystalCommands(profile));
                 event.editMessageEmbeds(new EmbedBuilder()
                         .setColor(new DefaultKrystalColor())
                         .addField("Private instance", "The bot is up and running using a `private` instance", false)
